@@ -1,3 +1,14 @@
+# Ignore virtualenv stuff except the site-packages subdirectory of python
+/venv/bin
+/venv/include
+/venv/lib/python*/*
+!/venv/lib/python*/site-packages
+
+
+
+# # # # # # # # # # #
+# Other files
+
 *.py[cod]
 
 # C extensions
