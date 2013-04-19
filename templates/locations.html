@@ -1,5 +1,33 @@
-<!doctype html>
-<title>Find a car nearby</title>
-
-<h1>Cars locations</h1>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        <title>Find a car nearby</title>
+    </head>
+    <body>
+        <h1>Cars locations</h1>
+        <table id="navigation">
+            <tr>
+                <th>Name</th>
+                <th>Vin</th>
+                <th>Coordinates</th>
+                <th>Interior</th>
+                <th>Exterior</th>
+                <th>Address</th>
+                <th>Fuel</th>
+                <th>Engine type</th>
+            </tr>
+        {% for car in cars %}
+            <tr>
+                <th>{{ car['name'] }}</th>
+                <th>{{ car['vin'] }}</th>
+                <th>{{ car['coordinates'] }}</th>
+                <th>{{ car['interior'] }}</th>
+                <th>{{ car['exterior'] }}</th>
+                <th>{{ car['address'] }}</th>
+                <th>{{ car['fuel'] }}</th>
+                <th>{{ car['engineType'] }}</th>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
