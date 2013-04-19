@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDheh_MoqgYwsq5iohF93lnCvHZkuKQoYg&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(53.5686, 10.0386),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        var latlng;
+
+        var full_icon = '/static/car2go_blue.png';
+        var empty_icon = '/static/car2go_red.png';
+
+        {% for car in cars %}
+            // latlng = new google.maps.LatLng({{ car['coordinates'][1] }}, {{ car['coordinates'][0] }});
+            // map.addOverlay(new google.maps.Marker(latlng));
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng({{ car['coordinates'][1] }}, {{ car['coordinates'][0] }}),
+                map: map,
+            {% if car['fuel'] > 25 %}
+                icon: full_icon
+            {% else %}
+                icon: empty_icon
+            {% endif %}
+            });
+
+        {% endfor %}
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>

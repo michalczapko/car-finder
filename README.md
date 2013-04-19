@@ -73,3 +73,8 @@ method, function?):
   json_data = json.load(raw_data)
   cars = json_data['placemarks']
 ```
+
+#### Google Maps v3
+
+All cars in Hamburg are presented on a map provided by Google Maps API:
+- https://developers.google.com/maps/documentation/javascript/tutorial
